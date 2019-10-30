@@ -8,7 +8,7 @@
 public class MatrixMath
 {
     // instance variables - replace the example below with your own
-    private int[][] math;
+    private int[][] data;
 
     /**
      * Constructor for objects of class MatrixMath
@@ -16,7 +16,7 @@ public class MatrixMath
     public MatrixMath(int[][] data)
     {
         // initialise instance variables
-       this.math = data;
+       this.data = data;
     }
 
     /**
@@ -27,14 +27,14 @@ public class MatrixMath
      */
     public int[] rowSum()
     {   
-        int[] sumRow = new int[math.length];
+        int[] sumRow = new int[data.length];
         
-        for(int i=0 ; i<math.length ; i++)
+        for(int i=0 ; i<data.length ; i++)
         {   
             int sum = 0;
-            for (int j=0 ; j<math[0].length ; i++)
+            for (int j=0 ; j<data[0].length ; i++)
             {
-                sum+=math[i][j];
+                sum+=data[i][j];
             }
             sumRow[i] = sum;
         }
@@ -48,7 +48,14 @@ public class MatrixMath
      */
     public double[] rowAve()
     {
-        return null;
+        double[] aveRow = new double[data.length];
+        
+        int[] sums = rowSum();
+        
+        for (int i=0 ; i<data.length ; i++){
+            aveRow[i]=(sums[i]*1.0)/data[i].length;
+        }
+        return aveRow;
     }
     
         /**
@@ -59,10 +66,21 @@ public class MatrixMath
      */
     public int[] colSum()
     {
-        return null;
+        int[] sumCol = new int[data.length];
+        
+        for(int i=0 ; i<data.length ; i++)
+        {   
+            int sum = 0;
+            for (int j=0 ; j<data[0].length ; i++)
+            {
+                sum+=data[i][j];
+            }
+            sumCol[i] = sum;
+        }
+        return sumCol;
     }
     
-     /**
+     /**=0
      * Find the average of all the values in each row
      *
      * @return    int[] 
